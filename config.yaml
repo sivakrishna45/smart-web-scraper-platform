@@ -1,0 +1,36 @@
+sites:
+  - name: "Hacker News"
+    url: "https://news.ycombinator.com"
+    type: "static"
+
+  - name: "Reddit Programming"
+    url: "https://www.reddit.com/r/programming/"
+    type: "dynamic"
+
+  - name: "The Hindu"
+    url: "https://www.thehindu.com/news/"
+    type: "static"
+
+  - name: "Indian Express"
+    url: "https://indianexpress.com/latest-news/"
+    type: "static"
+
+  - name: "Moneycontrol"
+    url: "https://www.moneycontrol.com/news/"
+    type: "static"
+
+  - name: "Economic Times"
+    url: "https://economictimes.indiatimes.com"
+    type: "dynamic"
+
+  - name: "YourStory"
+    url: "https://yourstory.com"
+    type: "dynamic"
+
+  - name: "Naukri"
+    url: "https://www.naukri.com"
+    type: "dynamic"
+
+  - name: "Flipkart"
+    url: "https://www.flipkart.com"
+    type: "dynamic"

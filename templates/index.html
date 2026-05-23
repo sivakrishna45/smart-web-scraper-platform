@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Web Scraper Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 20px; background: #f4f4f4; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #007bff; color: white; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Smart Web Scraper Dashboard</h1>
+    <p><strong>Total Records:</strong> {{ total_records }}</p>
+    
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Scraped At</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td><a href="{{ row.link }}" target="_blank">{{ row.title }}</a></td>
+            <td>{{ row.source }}</td>
+            <td>{{ row.scraped_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

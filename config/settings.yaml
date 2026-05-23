@@ -1,0 +1,16 @@
+project:
+  name: "Smart Web Scraper System"
+  version: "1.0"
+  author: "Siva Krishna"
+
+scraping:
+  default_delay: 3
+  max_retries: 5
+  timeout: 30
+
+storage:
+  database: "data/scraped_data.db"
+  raw_html: "raw_data/"
+
+monitoring:
+  log_level: "INFO"
