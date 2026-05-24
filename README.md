@@ -1,19 +1,30 @@
 # Smart Web Scraper Platform 🚀
 
-A production-style multi-source web scraping platform built using Python, FastAPI, BeautifulSoup, Playwright, SQLite, and APScheduler.
+Production-style real-time web scraping platform built using Python, FastAPI, Kafka, Redis, PostgreSQL, BeautifulSoup, Playwright, and Docker.
+
+The platform collects articles from multiple news and tech sources, processes them through an event-driven architecture, stores them in PostgreSQL, caches responses using Redis, and visualizes analytics through a modern FastAPI dashboard.
+
+---
 
 ## Features
 
-- Multi-source scraping
-- Indian news website scraping
+- Multi-source web scraping
+- Real-time event-driven pipeline using Kafka
+- FastAPI analytics dashboard
+- PostgreSQL database integration
+- Redis caching layer
 - Dynamic website scraping using Playwright
-- FastAPI dashboard
-- SQLite database integration
-- Duplicate prevention
-- Automated scheduler
-- Retry handling
-- Logging & monitoring
-- Change detection
+- Duplicate prevention & idempotency handling
+- CSV & Excel export support
+- Search & filtering APIs
+- Docker multi-container deployment
+- Automated scheduling support
+- Retry handling & resilience
+- Logging & monitoring ready
+- Source analytics visualization
+- Responsive enterprise UI dashboard
+
+---
 
 ## Integrated Sources
 
@@ -23,16 +34,58 @@ A production-style multi-source web scraping platform built using Python, FastAP
 - Economic Times
 - YourStory
 
+---
+
 ## Tech Stack
 
+### Backend
 - Python
 - FastAPI
 - BeautifulSoup
 - Playwright
-- SQLite
-- APScheduler
+
+### Streaming & Caching
+- Apache Kafka
+- Redis
+
+### Database
+- PostgreSQL
+- SQLite (initial development)
+
+### Data Processing
 - Pandas
+
+### Infrastructure
+- Docker
+- Docker Compose
+
+### Reliability
+- APScheduler
 - Tenacity
+
+---
+
+## System Architecture
+
+```text
+Web Scrapers
+      ↓
+Kafka Producer
+      ↓
+Kafka Topic
+      ↓
+Kafka Consumer
+      ↓
+PostgreSQL Database
+      ↓
+Redis Cache
+      ↓
+FastAPI APIs
+      ↓
+Analytics Dashboard
+```
+
+---
 
 ## Project Structure
 
@@ -43,6 +96,10 @@ web-scraper-system/
 ├── main.py
 ├── scheduler.py
 ├── database.py
+├── kafka_producer.py
+├── kafka_consumer.py
+├── docker-compose.yml
+├── Dockerfile
 ├── requirements.txt
 ├── README.md
 │
@@ -59,3 +116,81 @@ web-scraper-system/
 ├── logs/
 ├── data/
 └── venv/
+```
+
+---
+
+## Running the Project
+
+### Start Containers
+
+```bash
+docker compose up --build
+```
+
+### Access Dashboard
+
+```text
+http://localhost:8000
+```
+
+### Kafka Topic Creation
+
+```bash
+docker exec -it scraper-kafka kafka-topics \
+--create \
+--topic scraped_articles \
+--bootstrap-server localhost:9092 \
+--partitions 1 \
+--replication-factor 1
+```
+
+---
+
+## APIs
+
+| Endpoint | Description |
+|---|---|
+| `/` | Dashboard UI |
+| `/articles` | Latest articles |
+| `/stats` | Analytics statistics |
+| `/search` | Search articles |
+| `/source/{source}` | Filter by source |
+| `/health` | Health check |
+| `/export/csv` | Export CSV |
+| `/export/excel` | Export Excel |
+
+---
+
+## Future Enhancements
+
+- Kubernetes deployment
+- CI/CD pipeline
+- Prometheus + Grafana monitoring
+- Elasticsearch integration
+- AI article summarization
+- WebSocket real-time dashboard
+- JWT authentication
+- Microservices decomposition
+
+---
+
+## Screenshots
+
+### Dashboard
+Add your dashboard screenshot here.
+
+### Analytics
+Add your analytics screenshot here.
+
+---
+
+## Author
+
+Sivakrishna Velpula
+
+---
+
+## License
+
+MIT License
