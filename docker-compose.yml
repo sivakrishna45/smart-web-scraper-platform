@@ -1,0 +1,91 @@
+version: '3.9'
+
+services:
+
+  app:
+
+    build: .
+
+    container_name: scraper-app
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./data:/app/data
+
+    depends_on:
+      - redis
+      - kafka
+      - postgres
+
+  redis:
+
+    image: redis:latest
+
+    container_name: scraper-redis
+
+    ports:
+      - "6379:6379"
+
+  zookeeper:
+
+    image: confluentinc/cp-zookeeper:latest
+
+    container_name: scraper-zookeeper
+
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+    ports:
+      - "2181:2181"
+
+  kafka:
+
+    image: confluentinc/cp-kafka:7.4.0
+
+    container_name: scraper-kafka
+
+    depends_on:
+      - zookeeper
+
+    ports:
+      - "9092:9092"
+
+    environment:
+
+      KAFKA_BROKER_ID: 1
+
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  postgres:
+
+    image: postgres:15
+
+    container_name: scraper-postgres
+
+    environment:
+
+      POSTGRES_USER: admin
+
+      POSTGRES_PASSWORD: admin123
+
+      POSTGRES_DB: scraperdb
+
+    ports:
+      - "5440:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+
+  postgres_data:
