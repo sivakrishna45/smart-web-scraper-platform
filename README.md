@@ -178,10 +178,19 @@ docker exec -it scraper-kafka kafka-topics \
 ## Screenshots
 
 ### Dashboard
-Add your dashboard screenshot here.
+![Dashboard](screenshots/dashboard.png)
 
-### Analytics
-Add your analytics screenshot here.
+### Articles API
+![Articles API](screenshots/Articles_Json.png)
+
+### Docker Containers
+![Docker](screenshots/docker.png)
+
+### Kafka Consumer
+![Kafka Consumer](screenshots/kafka_consumer.png)
+
+### Kafka Producer
+![Kafka Producer](screenshots/kafka_producer.png)
 
 ---
 
@@ -190,7 +199,3 @@ Add your analytics screenshot here.
 Sivakrishna Velpula
 
 ---
-
-## License
-
-MIT License

@@ -1,1 +1,14 @@
+fastapi
+uvicorn
+beautifulsoup4
+requests
+redis
+kafka-python
+psycopg2-binary
+pandas
+tenacity
+apscheduler
+playwright
+lxml
+openpyxl
 wheel==0.47.0
